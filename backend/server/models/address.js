@@ -1,25 +1,23 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const SCHEMA_POSITION = new mongose.Schema({
-  pais: {
-    type: String,
-    required: [true, "Name is required"],
-   minlength: [4, "Name must be at least 4 characters long"]
-  },
-  uf: {
-    type: Number,
-    required: [true, "Payment is required"],
-  },
-  cep: {
-    type: String,
-    required: [true, "CEP is required"],
-  },
-  cidade: {
-    type: String,
-    required: [true, "City is required"],
-  },
-   rua: {
-    type: String,
-    required: [true, "Street is required"],
-  },
-}); 
+const SCHEMA_ADDRESS = mongoose.Schema({
+    street: {
+        type: String,
+        minlength: [4, "A rua deve conter no mínimo 4 caracteres"],
+        required: [true, "A rua é obrigatória"],
+    },
+    city: {
+        type: String,
+        minlength: [4, "A cidade deve conter no mínimo 4 caracteres"],
+        required: [true, "A cidade é obrigatória"],
+    },
+    UF: {
+        type: String,
+        maxlength: [2, "A UF deve conter no máximo 2 caracteres"],
+        required: [true, "A UF é obrigatória"],
+    },  
+    compliment: {
+        type: String,
+        maxlength: [100, "O complemento deve conter no máximo 100 caracteres"],
+    },
+})

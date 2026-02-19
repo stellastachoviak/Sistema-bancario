@@ -1,13 +1,17 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const SCHEMA_POSITION = new mongose.Schema({
-  name: {
-    type: String,
-    required: [true, "Name is required"],
-   minlength: [4, "Name must be at least 4 characters long"]
-  },
-  payment: {
-    type: Number,
-    required: [true, "Payment is required"],
-  }
-}); 
+const SCHEMA_POSITION = mongoose.Schema({
+    name: {
+        type: String,
+        minlength: [4, "O nome deve conter no mínimo 4 caracteres"],
+        required: [true, "O nome é obrigatório"],
+    },
+
+    payment: {
+        type: Number,
+        required: [true, "O pagamento é obrigatório"],
+    },
+
+
+
+})
